@@ -30,6 +30,8 @@ public class CraftableBedrock {
     
     public static Item bedrockPickaxe;
     
+    public static final Block[] blocksBPEffectiveAgainst = new Block[] {Block.bedrock};
+    
     // Says where the client and server 'proxy' code is loaded.
     @SidedProxy(clientSide="com.illhunter.craftablebedrock.client.ClientProxy", serverSide="com.illhunter.craftablebedrock.CommonProxy")
     public static CommonProxy proxy;
@@ -37,14 +39,14 @@ public class CraftableBedrock {
     @EventHandler // used in 1.6.2
     //@PreInit    // used in 1.5.2
     public void preInit(FMLPreInitializationEvent event) {
-            bedrockPickaxe = new BedrockPickaxe(13613, 4.0F, EnumToolMaterial.STONE, Block.bedrock);
+    			bedrockPickaxe = new BedrockPickaxe(13613, 4.0F, EnumToolMaterial.STONE, blocksBPEffectiveAgainst);
     }
     
     @EventHandler // used in 1.6.2
     //@Init       // used in 1.5.2
     public void load(FMLInitializationEvent event) {
             proxy.registerRenderers();
-            //Craftable Bedrock
+          //Craftable Bedrock
             ItemStack diamondBlockSingle = new ItemStack(Block.blockDiamond);
             ItemStack obsidianSingle = new ItemStack(Block.obsidian);
             ItemStack bedrockSingle = new ItemStack(Block.bedrock);
@@ -60,7 +62,7 @@ public class CraftableBedrock {
             GameRegistry.addRecipe(bedrockPickaxeSingle, "xxx", " y ", " y ",
                     'x', bedrockSingle, 'y', stickSingle);
 
-    }
+}
     
     @EventHandler // used in 1.6.2
     //@PostInit   // used in 1.5.2
